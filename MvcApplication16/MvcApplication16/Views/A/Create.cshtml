@@ -1,0 +1,49 @@
+﻿@model MvcApplication16.Models.AnswerVariant
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+3
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        
+    <fieldset>
+        <legend>AnswerVariant</legend>
+        @Html.HiddenFor(model => model.QuestionId, new { @Value = ViewBag.Id }) @* ViewBag.id = RouteData.Values["id"];*@
+          
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsCorect)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsCorect)
+            @Html.ValidationMessageFor(model => model.IsCorect)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Questions List", "Index","Q") |
+    @Html.ActionLink("Back to Tests List", "Index","T")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,50 @@
+﻿@model MvcApplication16.Models.ResoultSaveModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ResoultSaveModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TestName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TestName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Mark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Started)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Started)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Finished)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Finished)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

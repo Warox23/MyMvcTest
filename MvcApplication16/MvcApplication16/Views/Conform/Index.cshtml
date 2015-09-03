@@ -1,0 +1,19 @@
+﻿@using MvcApplication16.Models
+@model MvcApplication16.Models.ConformModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using(Html.BeginForm())
+{
+    @Html.HiddenFor(i => i.TestName)
+    @Html.HiddenFor(i => i.TestId)
+    
+    <p>Вы уверены что хотите начать тестирование @Model.TestName ?</p>
+    <p>Факт начала тестирования будет записан в базу как и ваша оценка</p>
+    <input type="submit" name="But" value=@EnumButtons.Yes />
+    <input type="submit" name="But" value=@EnumButtons.No />
+    
+}

@@ -1,0 +1,43 @@
+﻿@model MvcApplication16.Models.AnswerVariant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AnswerVariant</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AnswerId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AnswerId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QuestionId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Text)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Text)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsCorect)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsCorect)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

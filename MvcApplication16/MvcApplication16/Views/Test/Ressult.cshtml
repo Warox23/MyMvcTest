@@ -1,0 +1,81 @@
+﻿@model MvcApplication16.Models.RessultModel
+
+@{
+    ViewBag.Title = "Ressult";
+}
+
+<h2>Ressult</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mark)
+            @Html.DisplayFor(model => model.Mark)%
+        </th>
+        <th></th>
+    </tr>
+
+@for (int i = 0; i < Model.TrueQuestions.Count;i++ )
+{
+    <tr>
+        <td>
+          <strong>  @Html.DisplayFor(modelItem => modelItem.AnsweredQuestions[i].Text) </strong> 
+        </td>
+        <td>
+         <strong>   @Html.DisplayFor(modelItem => modelItem.TrueQuestions[i].Text) </strong>
+        </td>
+    </tr>
+    for (int j=0;j<Model.TrueQuestions[i].Answers.Count;j++ )
+    {  
+       if (Model.AnsweredQuestions[i].Answers[j].IsCorect == Model.TrueQuestions[i].Answers[j].IsCorect && Model.AnsweredQuestions[i].Answers[j].IsCorect )
+        { 
+    <tr>
+        
+        <td bgcolor="#C4F8BB">
+            @Html.DisplayFor(mi => mi.AnsweredQuestions[i].Answers[j].IsCorect)
+            @Html.DisplayFor(mi => mi.AnsweredQuestions[i].Answers[j].Text)
+        </td>
+        <td bgcolor="#C4F8BB">
+            @Html.DisplayFor(mi => mi.TrueQuestions[i].Answers[j].IsCorect)
+            @Html.DisplayFor(mi => mi.TrueQuestions[i].Answers[j].Text)
+        </td>
+
+
+    </tr>
+        } 
+
+        else if (Model.AnsweredQuestions[i].Answers[j].IsCorect)
+        {
+          <tr>
+              <td bgcolor="#FFE1E1">
+                  @Html.DisplayFor(mi => mi.AnsweredQuestions[i].Answers[j].IsCorect)
+                  @Html.DisplayFor(mi => mi.AnsweredQuestions[i].Answers[j].Text)
+              </td>
+              <td bgcolor="#FFE1E1">
+                  @Html.DisplayFor(mi => mi.TrueQuestions[i].Answers[j].IsCorect)
+                  @Html.DisplayFor(mi => mi.TrueQuestions[i].Answers[j].Text)
+              </td>
+          </tr>
+        }
+
+    else
+    {
+              <tr>
+            <td >
+                @Html.DisplayFor(mi => mi.AnsweredQuestions[i].Answers[j].IsCorect)
+                @Html.DisplayFor(mi => mi.AnsweredQuestions[i].Answers[j].Text)
+            </td>
+              <td >
+                  @Html.DisplayFor(mi => mi.TrueQuestions[i].Answers[j].IsCorect)
+                  @Html.DisplayFor(mi => mi.TrueQuestions[i].Answers[j].Text)
+              </td>
+          </tr>
+    }
+    }
+    
+}
+
+</table>

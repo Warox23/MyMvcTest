@@ -1,0 +1,36 @@
+﻿@model MvcApplication16.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Create a new account.</h2>
+</hgroup>
+
+
+@using ( Html.BeginForm("Register","Account")){
+
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary()
+
+    <fieldset>
+
+        @Html.LabelFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName)
+
+        @Html.LabelFor(m => m.Password)
+        @Html.EditorFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+
+        @Html.LabelFor(m => m.ConfirmPassword)
+        @Html.EditorFor(m => m.ConfirmPassword)
+        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+    </fieldset>
+
+        <input type="submit" value="Reg" />
+
+}

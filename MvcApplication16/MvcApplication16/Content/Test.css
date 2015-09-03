@@ -1,0 +1,30 @@
+﻿.ShowTest
+{
+    clear: both;
+    color:  #515151;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    
+}
+.ShowTest a
+{
+text-decoration: none;
+text-decoration-color: black;
+    
+}
+
+
+
+.ShowTest .HiddenText
+{
+    margin: 0px 99px 10px 20px;
+     font-weight: normal;
+    font-family: Calibri ;
+}
+
+
+.ShowTest:hover .HiddenText
+{
+     font-weight: bold;
+}

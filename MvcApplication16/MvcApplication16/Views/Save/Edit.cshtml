@@ -1,0 +1,70 @@
+﻿@model MvcApplication16.Models.ResoultSaveModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ResoultSaveModel</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TestName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TestName)
+            @Html.ValidationMessageFor(model => model.TestName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mark)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mark)
+            @Html.ValidationMessageFor(model => model.Mark)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Started)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Started)
+            @Html.ValidationMessageFor(model => model.Started)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Finished)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Finished)
+            @Html.ValidationMessageFor(model => model.Finished)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

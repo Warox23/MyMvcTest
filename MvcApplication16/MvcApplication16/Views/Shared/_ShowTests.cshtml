@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvcApplication16.Models.TestModel>
+
+<table>
+    <tr>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var tm in Model)
+    {
+        <tr>
+            <td>
+                <b>   @Html.DisplayFor(modelItem => tm.title) </b>
+            </td>
+            <td>
+                <b> @Html.DisplayFor(modelItem => tm.Description) </b>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = tm.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = tm.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = tm.Id }) |
+                @Html.ActionLink("Add question", "Create", "Q", new { id = tm.Id }, null)
+            </td>
+        </tr>
+
+        foreach (var item in tm.Questions)
+        {
+            <tr>
+                <td>
+                 <b>   @Html.DisplayFor(modelItem => item.Text)</b>
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.QuestionId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.QuestionId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.QuestionId }) |
+                    @Html.ActionLink("Add answer", "Create", "A", new { id = item.QuestionId }, null)
+                </td>
+            </tr>
+
+            foreach (var i in item.Answers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.IsCorect)
+                        @Html.DisplayFor(modelItem => i.Text)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "A", new { id = i.AnswerId }, null) |
+                        @Html.ActionLink("Details", "Details", "A", new { id = i.AnswerId }, null) |
+                        @Html.ActionLink("Delete", "Delete", "A", new { id = i.AnswerId }, null)
+                    </td>
+                </tr>
+            }
+
+        }
+    }
+
+</table>

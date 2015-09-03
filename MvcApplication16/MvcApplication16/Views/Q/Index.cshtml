@@ -1,0 +1,51 @@
+﻿@model IList<MvcApplication16.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.DisplayFor(modelItem => item.Text) 
+          
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuestionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionId }) |          
+            @Html.ActionLink("Add answer", "Create", "A", new { id = item.QuestionId }, null)
+        </td>
+    </tr>
+   
+    foreach (var i in item.Answers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => i.IsCorect)
+                @Html.DisplayFor(modelItem => i.Text)                
+            </td>
+           
+            <td>
+                @Html.ActionLink("Edit", "Edit", "A", new { id = i.AnswerId }, null) |
+                @Html.ActionLink("Details", "Details", "A", new { id = i.AnswerId }, null) |
+                @Html.ActionLink("Delete", "Delete", "A", new { id = i.AnswerId }, null)
+            </td>
+        </tr>
+    }
+
+}
+</table>
