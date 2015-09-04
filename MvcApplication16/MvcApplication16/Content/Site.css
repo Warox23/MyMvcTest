@@ -434,6 +434,12 @@ input, textarea {
     width: 300px;
 }
 
+    input[type=radio] {
+     width: 30px;
+    
+    }
+
+
 textarea {
     font-family: inherit;
     width: 500px;

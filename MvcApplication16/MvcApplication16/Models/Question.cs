@@ -31,41 +31,12 @@ namespace MvcApplication16.Models
                
             } 
         }
-    
-        private int trueAnsver=0;
-        [NotMapped]
-        public int TrueAnsver 
-        { 
+
+        public int CorrectAnswers
+        {
             get
             {
-
-                if (answers != null)
-                {
-                    trueAnsver = 0;
-                    foreach (var i in answers)
-                        if (i.IsCorect)
-                            trueAnsver++;
-                }
-                return trueAnsver;
-            }
-
-            set
-            {
-                trueAnsver = value;
-            }
-        }
-        public  Question()
-        {
-          
-        }
-
-        
-
-        public void SetFalse()
-        {
-            foreach (var item in Answers)
-            {
-                item.SetFalse();
+               return Answers.Count(ans => ans.IsCorect == true);
             }
         }
 

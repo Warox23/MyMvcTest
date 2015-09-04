@@ -1,16 +1,14 @@
 ﻿@model MvcApplication16.Models.QPage
 
 <table>
-    @{int i=0,j=0;}
+    @{int i = 0, j = 0;}
     <tr>
-        <th>
-          
-        </th>
+        <th></th>
         <th></th>
     </tr>
 
 
-  @*  @foreach (var questions in Model.questions[Model.CurrentPage - 1])
+    @*  @foreach (var questions in Model.questions[Model.CurrentPage - 1])
     {
 
                 @Html.HiddenFor(x=>questions.QuestionId, questions.QuestionId)
@@ -33,36 +31,45 @@
             }
     }*@
 
-   @foreach (var questions in Model.questions[Model.CurrentPage-1])
+    @foreach (var question in Model.questions[Model.CurrentPage - 1])
     {
         <tr>
             <td>
-                @Html.Hidden("questions[" + i + "].QuestionId", questions.QuestionId)
-                @Html.Hidden("questions[" + i + "].QuestionId", questions.QuestionId)
-                <b> @Html.DisplayFor(Text => questions.Text)</b> 
-                @Html.Hidden("questions[" + i + "].Text", questions.Text)
+                @Html.Hidden("questions[" + i + "].QuestionId", question.QuestionId)
+                @Html.Hidden("questions[" + i + "].QuestionId", question.QuestionId)
+                <b>@Html.DisplayFor(Text => question.Text)</b>
+                @Html.Hidden("questions[" + i + "].Text", question.Text)
             </td>
 
         </tr>
 
         { j = 0; }
 
-  
-            foreach (var Answers in questions.Answers)
-            {
-            <tr>
-                <td>
-                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].AnswerId", Answers.AnswerId)
-                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].Text", Answers.Text)
-                    @Html.CheckBox("questions[" + i + "].Answers[" + j + "].IsCorect", Answers.IsCorect)
-                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].QuestionId", Answers.QuestionId)
-                    @Html.DisplayFor(Text => Answers.Text)
 
-                </td>
+        foreach (var answer in question.Answers)
+        {
+        <tr>
+            <td>
+                @Html.Hidden("questions[" + i + "].Answers[" + j + "].AnswerId", answer.AnswerId)
+                @Html.Hidden("questions[" + i + "].Answers[" + j + "].Text", answer.Text)
 
-            </tr>
+                @if (question.CorrectAnswers > 1)
+                {
+                    @Html.CheckBox("questions[" + i + "].Answers[" + j + "].Checked", answer.Checked)
+                }
+                else
+                {
+                    @Html.RadioButton("questions[" + i + "].Answers[" + 1 + "].Checked", true, answer.Checked)
+                }
+                @Html.Hidden("questions[" + i + "].Answers[" + j + "].IsCorect", answer.IsCorect)
+                @Html.Hidden("questions[" + i + "].Answers[" + j + "].QuestionId", answer.QuestionId)
+                @Html.DisplayFor(Text => answer.Text)
+
+            </td>
+
+        </tr>
                 { j++; }
-            }
-             { i++; }
-        }   
+        }
+        { i++; }
+    }
 </table>

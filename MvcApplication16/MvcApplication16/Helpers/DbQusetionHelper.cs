@@ -15,9 +15,6 @@ namespace MvcApplication16.Helpers
               Where(i => i.TestId == testId).OrderBy(i => i.QuestionId).
               Skip(QUESTIONSONPAGE * pageNum - QUESTIONSONPAGE).Take(QUESTIONSONPAGE).ToList();
 
-           foreach (var ques in questions)
-               ques.SetFalse();
-
            return questions;
 
        }

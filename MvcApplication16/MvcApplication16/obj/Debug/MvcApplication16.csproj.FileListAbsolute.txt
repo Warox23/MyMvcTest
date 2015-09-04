@@ -180,7 +180,6 @@ C:\Users\rkachtc\Desktop\MvcApplication16\MvcApplication16\bin\zh-Hant\System.Sp
 C:\Users\rkachtc\Desktop\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.csprojResolveAssemblyReference.cache
 C:\Users\rkachtc\Desktop\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.dll
 C:\Users\rkachtc\Desktop\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.pdb
-C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.csprojResolveAssemblyReference.cache
 C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.dll
 C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.pdb
 C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\bin\MvcApplication16.dll

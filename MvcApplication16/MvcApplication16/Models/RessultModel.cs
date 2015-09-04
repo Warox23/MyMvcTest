@@ -33,10 +33,10 @@ namespace MvcApplication16.Models
                           if (correctQ.Answers[i].IsCorect == userQ.Answers[i].IsCorect)
                           {
                               if (correctQ.Answers[i].IsCorect)
-                                  mark += 1d / correctQ.TrueAnsver;
+                                  mark += 1d / correctQ.CorrectAnswers;
                           }
                           else
-                              mark -= 1d / correctQ.TrueAnsver;
+                              mark -= 1d / correctQ.CorrectAnswers;
                       }
                       if (mark < 0)
                           mark = 0;
