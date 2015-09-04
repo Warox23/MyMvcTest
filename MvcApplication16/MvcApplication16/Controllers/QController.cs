@@ -21,14 +21,6 @@ namespace MvcApplication16.Controllers
         public ActionResult Index()
         {
             var  questions = db.Questions.ToList();
-
-            foreach (var i in questions)
-                i.Answers = db.AnswerVariants.SqlQuery("Select * from AnswerVariants where QuestionId=" +
-                            i.QuestionId.ToString()).ToList();
-
-
-
-
             return View(questions);
         }
 

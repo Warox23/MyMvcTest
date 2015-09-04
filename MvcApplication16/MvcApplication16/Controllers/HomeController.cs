@@ -11,13 +11,10 @@ namespace MvcApplication16.Controllers
    
     public class HomeController : Controller
     {
-        static int k = 0;
+
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            k++;
-            ViewBag.count = k;
-
             return View();
         }
 
@@ -38,19 +35,20 @@ namespace MvcApplication16.Controllers
         [Authorize]
         public ActionResult Cabinet()
         {
-            List<TestModel> tests = new List<TestModel>();
-            List<ResoultSaveModel> RSM = new List<ResoultSaveModel>();
+           
+            CabinetModel cabinet = new CabinetModel();
+
             using (var db = new QuestionContext() )
             {
-                tests = db.Tests.ToList();
+                cabinet.tests = db.Tests.ToList();
             }
 
             using (var db = new SaveContext())
             {
-                RSM = db.Save.Where(x => x.UserName ==  HttpContext.User.Identity.Name).ToList();
+                cabinet.RSM = db.Save.Where(x => x.UserName ==  HttpContext.User.Identity.Name).ToList();
             }
 
-            return View(tests);
+            return View(cabinet);
         }
 
         [Authorize(Roles="Admin")]

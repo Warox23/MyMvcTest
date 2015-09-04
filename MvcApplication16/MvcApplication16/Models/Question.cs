@@ -38,10 +38,14 @@ namespace MvcApplication16.Models
         { 
             get
             {
-                trueAnsver = 0;
-                foreach (var i in answers)
-                    if (i.IsCorect)
-                        trueAnsver++;
+
+                if (answers != null)
+                {
+                    trueAnsver = 0;
+                    foreach (var i in answers)
+                        if (i.IsCorect)
+                            trueAnsver++;
+                }
                 return trueAnsver;
             }
 

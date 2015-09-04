@@ -9,7 +9,31 @@
         <th></th>
     </tr>
 
-    @foreach (var questions in Model.questions[Model.CurrentPage-1])
+
+  @*  @foreach (var questions in Model.questions[Model.CurrentPage - 1])
+    {
+
+                @Html.HiddenFor(x=>questions.QuestionId, questions.QuestionId)
+                <b> @Html.DisplayFor(Text => questions.Text)</b> 
+                @Html.HiddenFor(x=> questions.Text,questions.Text)
+
+         foreach (var Answers in questions.Answers)
+            {
+            <tr>
+                <td>
+                    @Html.HiddenFor(x=> Answers.AnswerId,Answers.AnswerId)
+                    @Html.HiddenFor(x=> Answers.Text,Answers.Text)
+                    @Html.CheckBoxFor(x=> Answers.IsCorect,Answers.IsCorect)
+                    @Html.HiddenFor(x=> Answers.QuestionId,Answers.QuestionId)
+                    @Html.DisplayFor(Text => Answers.Text)
+
+                </td>
+
+            </tr>
+            }
+    }*@
+
+   @foreach (var questions in Model.questions[Model.CurrentPage-1])
     {
         <tr>
             <td>
@@ -32,7 +56,6 @@
                     @Html.Hidden("questions[" + i + "].Answers[" + j + "].Text", Answers.Text)
                     @Html.CheckBox("questions[" + i + "].Answers[" + j + "].IsCorect", Answers.IsCorect)
                     @Html.Hidden("questions[" + i + "].Answers[" + j + "].QuestionId", Answers.QuestionId)
-                    @*@ @Html.EditorFor(IsCorect => Answers.IsCorect)*@
                     @Html.DisplayFor(Text => Answers.Text)
 
                 </td>
@@ -41,5 +64,5 @@
                 { j++; }
             }
              { i++; }
-        }        
+        }   
 </table>

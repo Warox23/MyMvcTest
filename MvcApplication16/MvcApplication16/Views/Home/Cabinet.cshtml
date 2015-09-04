@@ -1,4 +1,4 @@
-﻿@model IList<MvcApplication16.Models.TestModel>
+﻿@model MvcApplication16.Models.CabinetModel
 @{
     ViewBag.Title = "Cabinet";
 }
@@ -6,7 +6,29 @@
 <h2>Cabinet</h2>
 @ViewBag.message
 
-        @foreach (var i in Model)
-        {
-            @Html.Partial("_ShowTLink",i)
-        }
+@foreach (var i in Model.tests)
+{
+    @Html.Partial("_ShowTLink", i)
+}
+
+
+<table>
+    
+
+    <tr>
+        <th>@Html.LabelFor(x=>x.RSM.First().TestName)</th>
+
+        <th>@Html.LabelFor(x=>x.RSM.First().Mark)</th>
+
+        <th>@Html.LabelFor(x=>x.RSM.First().Started)</th>
+
+        <th>@Html.LabelFor(x=>x.RSM.First().Finished)</th>
+    </tr>
+
+    @foreach (var i in Model.RSM)
+    {
+        @Html.Partial("_ShowResult", i);
+    }
+
+
+</table>

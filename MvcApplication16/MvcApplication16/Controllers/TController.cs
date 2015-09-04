@@ -23,13 +23,8 @@ namespace MvcApplication16.Controllers
 
             foreach (var item in tests)
             {
-                item.Questions = db.Questions.SqlQuery("Select * From Questions where TestId="+item.Id.ToString()).ToList();
-
-                foreach (var i in item.Questions)
-                i.Answers = db.AnswerVariants.SqlQuery("Select * from AnswerVariants where QuestionId=" +
-                            i.QuestionId.ToString()).ToList();
-
-               
+                item.Questions = db.Questions.Where(x => x.TestId == item.Id).ToList();
+                    //SqlQuery("Select * From Questions where TestId="+item.Id.ToString()).ToList();               
             }
 
             
