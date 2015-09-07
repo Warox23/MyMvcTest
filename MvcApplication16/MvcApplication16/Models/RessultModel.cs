@@ -30,7 +30,7 @@ namespace MvcApplication16.Models
               
                       for (int i = 0; i <correctQ.Answers.Count; i++)
                       {
-                          if (correctQ.Answers[i].IsCorect == userQ.Answers[i].IsCorect)
+                          if (correctQ.Answers[i].IsCorect == userQ.Answers[i].Checked)
                           {
                               if (correctQ.Answers[i].IsCorect)
                                   mark += 1d / correctQ.CorrectAnswers;

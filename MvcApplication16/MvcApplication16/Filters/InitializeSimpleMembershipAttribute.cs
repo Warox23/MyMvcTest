@@ -16,11 +16,11 @@ namespace MvcApplication16.Filters
         private static object _initializerLock = new object();
         private static bool _isInitialized;
 
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+      /*  public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             // Обеспечение однократной инициализации ASP.NET Simple Membership при каждом запуске приложения
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
-        }
+        }*/
 
         private class SimpleMembershipInitializer
         {
@@ -39,7 +39,9 @@ namespace MvcApplication16.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                 //   WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
+
 
                     SimpleRoleProvider roles = (SimpleRoleProvider)Roles.Provider;
                     SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
@@ -54,6 +56,11 @@ namespace MvcApplication16.Filters
                     {
                         roles.CreateRole("Admin");
                     }
+                    if (!roles.RoleExists("User"))
+                    {
+                        roles.CreateRole("User");
+                    }
+
                     // Поиск пользователя с логином admin
                     if (membership.GetUser("admin", false) == null)
                     {

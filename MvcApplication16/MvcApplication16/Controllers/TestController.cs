@@ -39,7 +39,7 @@ namespace MvcApplication16.Controllers
        /// <summary>
        /// supports user testing
        /// </summary>
-       /// <param name="questions"> questions, and other informations for current page </param>
+       /// <param name="questions"> questions and other informations for current page </param>
         /// <param name="Next">  Next button needs to control testing or finish it </param>
        /// <returns></returns>
 

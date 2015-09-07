@@ -204,6 +204,7 @@
     <Compile Include="Models\QuestionContext.cs" />
     <Compile Include="Models\ResoultSaveModel.cs" />
     <Compile Include="Models\RessultModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\SaveContext.cs" />
     <Compile Include="Models\SimpleQPage.cs" />
     <Compile Include="Models\TestModel.cs" />

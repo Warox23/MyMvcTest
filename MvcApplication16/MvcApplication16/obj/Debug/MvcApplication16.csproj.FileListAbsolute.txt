@@ -269,3 +269,4 @@ C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\bi
 C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\bin\ru\System.Spatial.resources.dll
 C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\rkachtc\Documents\GitHub\MyMvcTest\MvcApplication16\MvcApplication16\obj\Debug\MvcApplication16.csprojResolveAssemblyReference.cache

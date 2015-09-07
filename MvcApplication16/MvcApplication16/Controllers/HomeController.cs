@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcApplication16.Models;
+using WebMatrix.WebData;
+using System.Web.Security;
+using System.Web.Profile;
 
 namespace MvcApplication16.Controllers
 {
@@ -55,6 +58,26 @@ namespace MvcApplication16.Controllers
         public ActionResult AdminPanel()
         {
             ViewBag.Message = "Admin Panel.";
+
+          
+
+            var a = 5;
+
+            var users = Membership.GetAllUsers();
+  
+
+            return View();
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult AdminPanel(RoleModel newRoles)
+        {
+            ViewBag.Message = "Admin Panel.";
+
+
+            var users = Membership.GetAllUsers();
+
+
 
             return View();
         }

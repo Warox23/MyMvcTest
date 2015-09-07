@@ -30,7 +30,7 @@
     </tr>
     for (int j=0;j<Model.TrueQuestions[i].Answers.Count;j++ )
     {  
-       if (Model.AnsweredQuestions[i].Answers[j].IsCorect == Model.TrueQuestions[i].Answers[j].IsCorect && Model.AnsweredQuestions[i].Answers[j].IsCorect )
+       if (Model.AnsweredQuestions[i].Answers[j].Checked == Model.TrueQuestions[i].Answers[j].IsCorect && Model.AnsweredQuestions[i].Answers[j].Checked )
         { 
     <tr>
         
@@ -47,7 +47,7 @@
     </tr>
         } 
 
-        else if (Model.AnsweredQuestions[i].Answers[j].IsCorect)
+        else if (Model.AnsweredQuestions[i].Answers[j].Checked)
         {
           <tr>
               <td bgcolor="#FFE1E1">

@@ -9,6 +9,7 @@ using MvcApplication16.Models;
 
 namespace MvcApplication16.Controllers
 {
+    [Authorize(Roles = "Moderator")]
     public class QController : Controller
     {
         private QuestionContext db = new QuestionContext();
