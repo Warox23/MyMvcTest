@@ -1,6 +1,44 @@
-﻿@{
+﻿@model MvcApplication16.Models.AdminCreateUserModel
+
+@{
     ViewBag.Title = "AdminPanel";
 }
 
 <h2>AdminPanel</h2>
-@ViewBag.Message;
+
+
+
+
+<hgroup class="title">
+    <h2>Create a new account.</h2>
+</hgroup>
+
+
+@using (Html.BeginForm("AdminPanel", "Home"))
+{
+
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary()
+
+    <fieldset>
+
+        @Html.LabelFor(m => m.reg.UserName)
+        @Html.TextBoxFor(m => m.reg.UserName)
+
+        @Html.LabelFor(m => m.reg.Password)
+        @Html.EditorFor(m => m.reg.Password)
+        @Html.ValidationMessageFor(m => m.reg.Password)
+
+        @Html.LabelFor(m => m.reg.ConfirmPassword)
+        @Html.EditorFor(m => m.reg.ConfirmPassword)
+        @Html.ValidationMessageFor(m => m.reg.ConfirmPassword)
+
+        @Html.LabelFor(m=>m.RolesList)
+        @Html.ListBoxFor(m=>m.RolesList,new MultiSelectList(Roles.Provider.GetAllRoles()))
+
+    </fieldset>
+
+        <input type="submit" value="Create Accaunt" />
+
+}

@@ -25,10 +25,16 @@
         <th>@Html.LabelFor(x=>x.RSM.First().Finished)</th>
     </tr>
 
-    @foreach (var i in Model.RSM)
+    @if(Model.RSM.Count>0)
     {
-        @Html.Partial("_ShowResult", i);
+        foreach (var i in Model.RSM)
+        {
+            @Html.Partial("_ShowResult", i);
+        }
     }
-
+    else
+    {
+        <p>You are not have resoults yet</p>
+    }
 
 </table>

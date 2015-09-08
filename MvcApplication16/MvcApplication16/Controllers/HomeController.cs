@@ -61,26 +61,28 @@ namespace MvcApplication16.Controllers
 
           
 
-            var a = 5;
-
-            var users = Membership.GetAllUsers();
-  
 
             return View();
         }
-        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult AdminPanel(RoleModel newRoles)
+        [Authorize(Roles = "Admin")]
+        public ActionResult AdminPanel(AdminCreateUserModel model)
         {
-            ViewBag.Message = "Admin Panel.";
 
+            SimpleRoleProvider roles = (SimpleRoleProvider)Roles.Provider;
+            SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
 
-            var users = Membership.GetAllUsers();
+            membership.CreateUserAndAccount(model.reg.UserName,model.reg.Password);
+
+            roles.AddUsersToRoles(new[] {model.reg.UserName},model.RolesList.ToArray<string>());
+            
+
 
 
 
             return View();
         }
+
 
     }
 }

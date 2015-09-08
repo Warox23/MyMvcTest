@@ -46,6 +46,8 @@ namespace MvcApplication16.Filters
                     SimpleRoleProvider roles = (SimpleRoleProvider)Roles.Provider;
                     SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
 
+                    
+
                     // Проверка наличия роли Moderator
                     if (!roles.RoleExists("Moderator"))
                     {

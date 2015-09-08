@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Helpers\DbQusetionHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AdminCreateUserModel.cs" />
     <Compile Include="Models\AnswerVariant.cs" />
     <Compile Include="Models\CabinetModel.cs" />
     <Compile Include="Models\EnumButtons.cs" />
