@@ -77,7 +77,7 @@ namespace MvcApplication16.Controllers
             List<Question> correctAnswers = new List<Question>();
            
         
-        correctAnswers = db.Questions.Where(i => i.TestId == TestId).OrderBy(i => i.QuestionId).ToList();
+        correctAnswers = db.Questions.AsNoTracking().Where(i => i.TestId == TestId).OrderBy(i => i.QuestionId).ToList();
      
         foreach (var i in PersonalTestProgress[currentUsName].questions)
             foreach (var item in i)
@@ -127,7 +127,7 @@ namespace MvcApplication16.Controllers
 
                var Qtmp = db.GetQuestionsFromDb(1, TestId,QUESTIONSONPAGE);
 
-               int CountPages = (int)Math.Ceiling(db.Questions.Where(x => x.TestId == TestId).Count() / (double)QUESTIONSONPAGE);
+               int CountPages = (int)Math.Ceiling(db.Questions.AsNoTracking().Where(x => x.TestId == TestId).Count() / (double)QUESTIONSONPAGE);
 
                QPage tmp = new QPage(Qtmp, CountPages, QUESTIONSONPAGE, 1, TestId);
                PersonalTestProgress.Add(RSM.UserName, tmp);

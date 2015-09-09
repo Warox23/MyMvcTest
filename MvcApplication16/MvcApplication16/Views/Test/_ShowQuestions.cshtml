@@ -45,31 +45,34 @@
 
         { j = 0; }
 
+      
+            foreach (var answer in question.Answers)
+            {
+            <tr>
+                <td>
+                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].AnswerId", answer.AnswerId)
+                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].Text", answer.Text)
 
-        foreach (var answer in question.Answers)
-        {
-        <tr>
-            <td>
-                @Html.Hidden("questions[" + i + "].Answers[" + j + "].AnswerId", answer.AnswerId)
-                @Html.Hidden("questions[" + i + "].Answers[" + j + "].Text", answer.Text)
+                  @*  @if (question.CorrectAnswers > 1)
+    {*@
+                        @Html.CheckBox("questions[" + i + "].Answers[" + j + "].Checked", answer.Checked)
+              @*      }
+                    else
+                    {
+                        
+                            @Html.RadioButton("questions[" + i + "].Answers[" + j + "].Checked", true, answer.Checked)
+                       
+                    }*@
+                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].IsCorect", answer.IsCorect)
+                    @Html.Hidden("questions[" + i + "].Answers[" + j + "].QuestionId", answer.QuestionId)
+                    @Html.DisplayFor(Text => answer.Text)
 
-                @if (question.CorrectAnswers > 1)
-                {
-                    @Html.CheckBox("questions[" + i + "].Answers[" + j + "].Checked", answer.Checked)
-                }
-                else
-                {
-                    @Html.RadioButton("questions[" + i + "].Answers[" + 1 + "].Checked", true, answer.Checked)
-                }
-                @Html.Hidden("questions[" + i + "].Answers[" + j + "].IsCorect", answer.IsCorect)
-                @Html.Hidden("questions[" + i + "].Answers[" + j + "].QuestionId", answer.QuestionId)
-                @Html.DisplayFor(Text => answer.Text)
+                </td>
 
-            </td>
-
-        </tr>
-                { j++; }
-        }
-        { i++; }
+            </tr>
+            { j++; }
+            }
+       
+                    { i++; }
     }
 </table>
