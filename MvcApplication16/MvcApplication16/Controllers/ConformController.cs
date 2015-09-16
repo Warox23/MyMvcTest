@@ -1,4 +1,6 @@
-﻿using MvcApplication16.Models;
+﻿using Common.Enums;
+using Model.DB;
+using MvcApplication16.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcApplication16.Models;
+using Model.DB;
+using DAL;
 
 namespace MvcApplication16.Controllers
 {

@@ -7,33 +7,27 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Timers;
-using MvcApplication16.Helpers;
+using Common.Enums;
+using Model.DB;
+using System.Data.Entity;
+using DAL;
+using BAL;
 
 namespace MvcApplication16.Controllers
 {
    [Authorize]
     public class TestController : Controller
     {
-
-        public readonly int QUESTIONSONPAGE = 3;
-        static Dictionary<string, QPage> PersonalTestProgress;
-        QuestionContext db = new QuestionContext();
-       
-  
         //
         // GET: /Test/
         public ActionResult Index(int id = 1)
         {
             string currentUsName = GetUserName();
-            
 
-           if (PersonalTestProgress[currentUsName].questions[id-1]==null)
-           {
-               PersonalTestProgress[currentUsName].questions[id - 1] = db.GetQuestionsFromDb(id, PersonalTestProgress[currentUsName].TestId,QUESTIONSONPAGE );    
-           }
-            PersonalTestProgress[currentUsName].CurrentPage = id;
+            TestProgres.ReadQuestionsForUser(currentUsName,id);
+            TestProgres.UpdateUserPage(currentUsName, id);
 
-           return View(PersonalTestProgress[currentUsName]);
+            return View(TestProgres.PersonalTestProgress[currentUsName]);
         }
 
        /// <summary>
@@ -46,20 +40,17 @@ namespace MvcApplication16.Controllers
         [HttpPost]
         public ActionResult Index(SimleQPage answer, EnumButtons Next)
         {
-            string currentUsName = GetUserName();
-
-            if (!(PersonalTestProgress[currentUsName].ComapareTestId(answer.TestId)))
+            if (!TestProgres.IsValidTest(answer))
                 return View("Error");
 
-            PersonalTestProgress[currentUsName].questions[answer.CurrentPage - 1] = answer.questions;
-
-            // if (Request.Form["Next"] == EnumButtons.Done.ToString())
+            TestProgres.UpdateQuestionsForUser(answer);
 
             if (Next == EnumButtons.Done)
-                return RedirectToRoute(new { controller = "test", action = "Ressult", TestId = PersonalTestProgress[currentUsName].TestId });
+                return RedirectToRoute(new 
+                { controller = "test", action = "Ressult", TestId = TestProgres.GetTestId(answer.UssrName) });
 
-            PersonalTestProgress[currentUsName].CurrentPage++;
-            return RedirectToRoute(new { controller = "test", action = "Index", id = PersonalTestProgress[currentUsName].CurrentPage.ToString() });
+            return RedirectToRoute(new 
+                { controller = "test", action = "Index", id = TestProgres.IncremenCurrentPage(answer.UssrName) });
         }
 
 
@@ -73,68 +64,28 @@ namespace MvcApplication16.Controllers
         public ActionResult Ressult(int TestId = 0)
         {
             string currentUsName = GetUserName();
-            List<Question> userAnswers = new List<Question>();
-            List<Question> correctAnswers = new List<Question>();
-           
-        
-        correctAnswers = db.Questions.AsNoTracking().Where(i => i.TestId == TestId).OrderBy(i => i.QuestionId).ToList();
-     
-        foreach (var i in PersonalTestProgress[currentUsName].questions)
-            foreach (var item in i)
-                userAnswers.Add(item);
 
-        var RM = new RessultModel(userAnswers, correctAnswers);
+            List<Question> userAnswers = TestProgres.GetAnsweredList(currentUsName);
 
-          using (SaveContext a = new SaveContext())
-          {
-              var RSM = a.Save.ToList().Last(i => i.UserName == currentUsName);
-              RSM.Mark = (int)RM.Mark;
-              RSM.Finished = DateTime.Now;
+            var RM = new RessultModel(userAnswers, currentUsName,TestId);
+            RM.SaveResult();
 
-              if (ModelState.IsValid)
-              {
-                  a.Entry(RSM).State = EntityState.Modified;
-                  a.SaveChanges();
-              }
-          }
-          PersonalTestProgress.Remove(currentUsName);
+          TestProgres.RemoveUser(currentUsName);
           return View(RM);
         }
 
-       /// <summary>
+
+        /// <summary>
        /// colled before start testing,  need to control users
        /// </summary>
        /// <param name="TestName">name of current test</param>
        /// <param name="TestId"> id of current test</param>
        /// <returns></returns>
-        public ActionResult InitTest(string TestName, int TestId)
+        public ActionResult InitTest(string testName, int testId)
        {
-           if (PersonalTestProgress == null)
-            {
-                PersonalTestProgress = new Dictionary<string,QPage>();
-            }
-
-           if (!PersonalTestProgress.Keys.Contains(GetUserName()))
-           {
-               ResoultSaveModel RSM = new ResoultSaveModel();
-               RSM.SetDefaultValues(TestName,GetUserName());
-
-               using (SaveContext a = new SaveContext())
-               {
-                   a.Save.Add(RSM);
-                   a.SaveChanges();
-               }
-
-               var Qtmp = db.GetQuestionsFromDb(1, TestId,QUESTIONSONPAGE);
-
-               int CountPages = (int)Math.Ceiling(db.Questions.AsNoTracking().Where(x => x.TestId == TestId).Count() / (double)QUESTIONSONPAGE);
-
-               QPage tmp = new QPage(Qtmp, CountPages, QUESTIONSONPAGE, 1, TestId);
-               PersonalTestProgress.Add(RSM.UserName, tmp);
-           }
-           else if (!PersonalTestProgress[GetUserName()].ComapareTestId(TestId))
-               return View("Error");
-
+           TestProgres.InitTestProgres();
+    
+            TestProgres.SetStartPoint(testName,testId,GetUserName());
 
 
            return RedirectToRoute(new {controller="Test", action = "index", id = 1 });

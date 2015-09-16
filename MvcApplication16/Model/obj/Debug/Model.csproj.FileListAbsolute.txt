@@ -1,0 +1,14 @@
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\Model.dll.config
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\Model.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\Model.pdb
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\Common.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\EntityFramework.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\Common.pdb
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\EntityFramework.xml
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Users\Romka\Documents\MvcApplication16\Model\obj\Debug\Model.dll
+C:\Users\Romka\Documents\MvcApplication16\Model\obj\Debug\Model.pdb

@@ -7,6 +7,8 @@ using MvcApplication16.Models;
 using WebMatrix.WebData;
 using System.Web.Security;
 using System.Web.Profile;
+using Model.DB;
+using DAL;
 
 namespace MvcApplication16.Controllers
 {
@@ -64,7 +66,7 @@ namespace MvcApplication16.Controllers
 
             return View();
         }
-        [HttpPost]
+     /*   [HttpPost]
         [Authorize(Roles = "Admin")]
         public ActionResult AdminPanel(AdminCreateUserModel model)
         {
@@ -81,7 +83,7 @@ namespace MvcApplication16.Controllers
 
 
             return View();
-        }
+        }*/
 
 
     }

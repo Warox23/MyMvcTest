@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcApplication16.Models;
+using Model.DB;
+using DAL;
 
 namespace MvcApplication16.Controllers
 {
@@ -14,7 +16,7 @@ namespace MvcApplication16.Controllers
         [Authorize(Roles = "Moderator")]
     public class TController : Controller
     {
-        private QuestionContext db = new QuestionContext();
+            private DAL.QuestionContext db = new DAL.QuestionContext();
 
         //
         // GET: /T/
